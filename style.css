@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-image: url('GROVER-sample-fake-news-formatted.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner {
+    position: relative;
+}
+
+.banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.title {
+    position: absolute;
+    top: 85%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #333;
+    font-family: sans-serif;
+    margin-left: 50px;
+    /* Add this line to create a margin on the left side */
+}
+
+main {
+    margin-top: 50px;
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    padding: 50px;
+    margin: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#reference {
+    font-size: small;
+}
+
+nav {
+    background-color: #f2f2f2;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    transition: top 0.3s;
+}
+
+.nav-title {
+    margin-left: 50px;
+    text-align: left;
+    color: #333;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    float: right;
+    font-weight: 600;
+}
+
+nav li a {
+    display: block;
+    color: #333;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #ddd;
+}
+
+/* Hide the navbar when the user scrolls down */
+nav.hide {
+    top: -50px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.left {
+    width: 50%;
+    padding-right: 10px;
+}
+
+.right {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.image-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.image-container p {
+    text-align: center;
+    font-style: italic;
+    font-size: 14px;
+}
+
+hr {
+    clear: both;
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+.bottom {
+    border-width: 5px;
+}
