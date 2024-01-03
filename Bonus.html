@@ -24,16 +24,41 @@
                 });
             });
         });
+        document.addEventListener("DOMContentLoaded", function () {
+            var nav = document.querySelector("nav");
+            var lastScrollTop = 0;
+
+            window.addEventListener("scroll", function () {
+                var currentScrollTop = window.scrollY;
+
+                if (currentScrollTop > lastScrollTop) {
+                    // 向下滾動
+                    nav.classList.add("scroll-up");
+                } else {
+                    // 向上滾動
+                    nav.classList.remove("scroll-up");
+                }
+
+                lastScrollTop = currentScrollTop;
+            });
+        });
+
         var prevScrollpos = window.pageYOffset;
+
         window.onscroll = function () {
             var currentScrollPos = window.pageYOffset;
+
             if (prevScrollpos > currentScrollPos) {
-                document.getElementsByTagName("nav")[0].classList.remove("hide");
+                document.getElementById("navbar").classList.add("fixed");
+                document.getElementById("navbar").classList.remove("absolute");
             } else {
-                document.getElementsByTagName("nav")[0].classList.add("hide");
+                document.getElementById("navbar").classList.remove("fixed");
+                document.getElementById("navbar").classList.add("absolute");
             }
+
             prevScrollpos = currentScrollPos;
         }
+
         /* 以下幾行若新增，可讓導覽列在網頁沒有捲動時展開。 */
         /*var timeout = null;
         window.addEventListener('scroll', function () {
@@ -46,34 +71,36 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <a class="navbar-brand" href="#"><strong>AI在假新聞判別的運用</strong></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#background">Background</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#transformer-model">Transformer Model</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#example">Example</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#reference">Reference</a>
-                </li>
-            </ul>
-        </div>
+    <nav id="navbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <a class="navbar-brand" href="#"><strong>AI 在假新聞判別的運用</strong></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#background">Background</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#transformer-model">Transformer Model</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#example">Example</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#reference">Reference</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </nav>
     <header>
-        <img src="banner-image-1.jpg" alt="banner-image-1" class="banner-image">
         <div class="title">
             <h1><b>AI 在假新聞判別的運用</b></h1>
-            <h2>Group 5</h2>
+            <h2>The application of AI<br>in the detection of fake news</h2>
+            <h3>Group 5</h3>
             <h4>資管一</h4>
             <h5>萬亭妤 李元中 李謙謙 陳詠旭</h5>
         </div>
@@ -116,12 +143,12 @@
                     </div>
                     <div class="right">
                         <div class="image-container">
-                            <img src="https://assets.st-note.com/img/1682231608124-6j36rUWOJu.png?width=2000&height=2000&fit=bounds&format=jpg&quality=85"
+                            <img src="Transformer_flow.png"
                                 alt="Transformer 模型流程圖">
                             <p>Transformer 模型流程圖</p>
                         </div>
                         <div class="image-container">
-                            <img src="https://img-blog.csdnimg.cn/20210126211743345.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTk4ODU0NQ==,size_16,color_FFFFFF,"
+                            <img src="Attention_flow.png"
                                 alt="Attention 流程圖">
                             <p>Attention 流程圖</p>
                         </div>
@@ -141,13 +168,11 @@
                         <p>提供更多樣本，並加強訓練時間，以提高 AI 的辨識率。</p>
                         <h4>風險</h4>
                         <p>Grover 在 GAN 技術的運作下，除了訓練出辨認假訊息的 AI 外，還訓練了生成假新聞的 AI ，若後者被有心人所利用，將對現今的資訊社會產生風險。</p>
-                        <button
-                            style="background-color: blue; color: white; border-radius: 10px; box-shadow: 2px 2px 2px grey;"
-                            onclick="window.open('https://grover.allenai.org/', '_blank')">前往 Grover</button>
+                        <button onclick="window.open('https://grover.allenai.org/', '_blank')">前往 Grover</button>
                     </div>
                     <div class="right">
                         <div class="image-container">
-                            <img src="https://www.netadmin.com.tw/netadmin/upload/pic/2023-06/202306021527002828191944.png"
+                            <img src="GAN_flow.png"
                                 alt="生成對抗網路（GAN）的架構">
                             <p>生成對抗網路（GAN）的架構</p>
                         </div>
@@ -156,23 +181,30 @@
             </section>
             <hr class="bottom">
             <section id="reference">
-                <h5>Reference</h5>
-                <p><a href="https://www.ifanr.com/1249217">https://www.ifanr.com/1249217</a>
-                    <br><a
-                        href="https://lawjournal.nuk.edu.tw/attach/1802-2.pdf">https://lawjournal.nuk.edu.tw/attach/1802-2.pdf</a>
-                    <br><a
-                        href="https://www.netadmin.com.tw/netadmin/zh-tw/technology/413C79020CA54C6E8ECAD1222A8B19FA">https://www.netadmin.com.tw/netadmin/zh-tw/technology/413C79020CA54C6E8ECAD1222A8B19FA</a>
-                    <br><a
-                        href="https://txt.cohere.com/what-are-transformer-models/">https://txt.cohere.com/what-are-transformer-models/</a>
-                    <br><a
-                        href="https://jalammar.github.io/illustrated-transformer/?ref=txt.cohere.com">https://jalammar.github.io/illustrated-transformer/?ref=txt.cohere.com</a>
-                </p>
+                <div class="container">
+                    <div class="left">
+                        <h5>Reference</h5>
+                        <p><a href="https://www.ifanr.com/1249217">https://www.ifanr.com/1249217</a>
+                            <br><a
+                                href="https://lawjournal.nuk.edu.tw/attach/1802-2.pdf">https://lawjournal.nuk.edu.tw/attach/1802-2.pdf</a>
+                            <br><a
+                                href="https://www.netadmin.com.tw/netadmin/zh-tw/technology/413C79020CA54C6E8ECAD1222A8B19FA">https://www.netadmin.com.tw/netadmin/zh-tw/technology/413C79020CA54C6E8ECAD1222A8B19FA</a>
+                            <br><a
+                                href="https://txt.cohere.com/what-are-transformer-models/">https://txt.cohere.com/what-are-transformer-models/</a>
+                            <br><a
+                                href="https://jalammar.github.io/illustrated-transformer/?ref=txt.cohere.com">https://jalammar.github.io/illustrated-transformer/?ref=txt.cohere.com</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="right">
+            </section>
+            <section id="edit">
+                <script>
+                    document.write("Last Update: " + document.lastModified);
+                </script>
             </section>
         </section>
     </main>
-    <script>
-        document.write("Last Update: " + document.lastModified);
-    </script>
 </body>
 
 </html>
